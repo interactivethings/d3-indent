@@ -1,0 +1,27 @@
+{
+  "name": "d3.layout.indent",
+  "version": "1.0.0",
+  "description": "Indented tree layout for D3",
+  "main": "d3.layout.indent.js",
+  "scripts": {
+    "test": "vows"
+  },
+  "repository": "",
+  "keywords": [
+    "d3",
+    "layout",
+    "tree",
+    "indented"
+  ],
+  "author": {
+    "name": "Jeremy Stucki",
+    "url": "http://interactivethings.com"
+  },
+  "license": "BSD",
+  "dependencies": {
+    "d3": "~3.1.5"
+  },
+  "devDependencies": {
+    "vows": "~0.7.0"
+  }
+}
