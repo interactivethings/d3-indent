@@ -1,10 +1,10 @@
 {
   "name": "d3.layout.indent",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Indented tree layout for D3",
   "main": "d3.layout.indent.js",
   "scripts": {
-    "test": "vows"
+    "test": "node_modules/.bin/vows --spec"
   },
   "repository": "",
   "keywords": [

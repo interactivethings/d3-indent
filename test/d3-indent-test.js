@@ -19,7 +19,7 @@ vows.describe('d3.layout.indent').addBatch({
         {x: 1, y: 3}
       ]);
     },
-    'accepts dx and dy scalars': function(indent) {
+    'accepts dx and dy numbers': function(indent) {
       var l = indent()
         .dx(20)
         .dy(10);
