@@ -1,5 +1,5 @@
 {
-  "name": "d3.layout.indent",
+  "name": "d3-indent",
   "version": "0.0.1",
   "description": "Indented tree layout for D3",
   "main": "d3.layout.indent.js",
