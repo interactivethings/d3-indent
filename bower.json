@@ -1,0 +1,11 @@
+{
+  "name": "d3-indent",
+  "version": "0.0.1",
+  "main": "d3.layout.indent.js",
+  "dependencies": {
+    "d3": ">=2.10.3"
+  },
+  "devDependencies": {
+    "vows": "~0.7.0"
+  }
+}

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node_modules/.bin/vows --spec"
   },
-  "repository": "",
+  "repository": "https://github.com/interactivethings/d3-indent.git",
   "keywords": [
     "d3",
     "layout",
@@ -19,7 +19,7 @@
   },
   "license": "BSD",
   "dependencies": {
-    "d3": "~3.1.5"
+    "d3": ">=2.10.3"
   },
   "devDependencies": {
     "vows": "~0.7.0"
