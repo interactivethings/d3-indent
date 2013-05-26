@@ -1,6 +1,6 @@
 {
   "name": "d3-indent",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "d3.layout.indent.js",
   "dependencies": {
     "d3": ">=2.10.3"
