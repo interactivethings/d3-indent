@@ -8,7 +8,7 @@ var indent = require("../d3.layout.indent.js");
 vows.describe('d3.layout.indent').addBatch({
   'indented tree layout' : {
     topic: function() { return d3.layout.indent; },
-    'increments x and y by 15 per default': function(indent) {
+    'increments x and y by 1 per default': function(indent) {
       var l = indent();
       var tree = {id: "root", children: [{id: "one", children: [{id: "one.one"}]}, {id: "two"}]}
 
@@ -19,10 +19,9 @@ vows.describe('d3.layout.indent').addBatch({
         {x: 1, y: 3}
       ]);
     },
-    'accepts dx and dy numbers': function(indent) {
+    'defined nodeSize': function(indent) {
       var l = indent()
-        .dx(20)
-        .dy(10);
+        .nodeSize([20, 10]);
       var tree = {id: "root", children: [{id: "one", children: [{id: "one.one"}]}, {id: "two"}]}
 
       assert.deepEqual(l.nodes(tree).map(layout), [
@@ -32,17 +31,36 @@ vows.describe('d3.layout.indent').addBatch({
         {x: 20, y: 30}
       ]);
     },
-    'accepts dx and dy functions': function(indent) {
+    'nodeSize and separation': function(indent) {
       var l = indent()
-        .dx(function(d) { return 10; })
-        .dy(function(d) { return d.children ? 20 : 10; });
-      var tree = {id: "root", children: [{id: "one", children: [{id: "one.one"}]}, {id: "two"}]}
+        .nodeSize([10, 10])
+        .separation(function(a, b) {
+          return a.parent === b.parent ? 1 : 2;
+        });
+      var tree = {id: "root", children: [{id: "one", children: [{id: "one.one"}, {id: "one.two"}]}, {id: "two"}]}
+
+      assert.deepEqual(l.nodes(tree).map(layout), [
+        {x: 0, y: 0},
+        {x: 10, y: 20},
+        {x: 20, y: 40},
+        {x: 20, y: 50},
+        {x: 10, y: 70}
+      ]);
+    },
+    'different separation': function(indent) {
+      var l = indent()
+        .nodeSize([10, 10])
+        .separation(function(a, b) {
+          return a.children ? 2 : 1;
+        });
+      var tree = {id: "root", children: [{id: "one", children: [{id: "one.one"}, {id: "one.two"}]}, {id: "two"}]}
 
       assert.deepEqual(l.nodes(tree).map(layout), [
         {x: 0, y: 0},
         {x: 10, y: 20},
         {x: 20, y: 30},
-        {x: 10, y: 40}
+        {x: 20, y: 40},
+        {x: 10, y: 50}
       ]);
     }
   }

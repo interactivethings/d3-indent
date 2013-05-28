@@ -1,45 +1,47 @@
 (function() {
   d3.layout.indent = function() {
     var hierarchy = d3.layout.hierarchy(),
-        dx = d3.functor(1),
-        dy = d3.functor(1);
+        separation = d3_layout_indentSeparation,
+        nodeSize = [1, 1];
 
-    function position(node, y) {
+    function position(node, previousNode) {
       var children = node.children;
-      node.y = y += dy.call(this, node);
-      node.x = node.depth * dx.call(this, node);
+      node.y = previousNode ? previousNode.y + nodeSize[1] * separation(node, previousNode) : 0;
+      node.x = node.depth * nodeSize[0];
       if (children && (n = children.length)) {
         var i = -1,
             n;
         while (++i < n) {
-          y = position(children[i], y);
+          node = position(children[i], node);
         }
       }
-      return y;
+      return node;
     }
 
     function indent(d, i) {
       var nodes = hierarchy.call(this, d, i);
-      position(nodes[0], -dy.call(this, nodes[0]));
+      position(nodes[0]);
       return nodes;
     }
 
-    // Accessor for the x-increment of each depth level
-    indent.dx = function(value) {
-      if (!arguments.length) return dx;
-      dx = d3.functor(value);
+    indent.nodeSize = function(value) {
+      if (!arguments.length) return nodeSize;
+      nodeSize = value;
       return indent;
     };
 
-    // Accessor for the y-increment of each node
-    indent.dy = function(value) {
-      if (!arguments.length) return dy;
-      dy = d3.functor(value);
+    indent.separation = function(value) {
+      if (!arguments.length) return separation;
+      separation = value;
       return indent;
     };
 
     return d3_layout_hierarchyRebind(indent, hierarchy);
   };
+
+  function d3_layout_indentSeparation() {
+    return 1;
+  }
 
   // A method assignment helper for hierarchy subclasses.
   function d3_layout_hierarchyRebind(object, hierarchy) {
