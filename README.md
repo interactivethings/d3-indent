@@ -14,12 +14,12 @@ var tree = {id: "root", children: [{id: "child1"}, {id: "child2"}]};
 var nodes = indent.nodes(tree); // -> [{id:"root", x: 0, y: 0}, {id: "child1", x: 1, y: 1}, {id: "child2", x: 1, y: 2}]
 ```
 
-You can use numerical values or functions as arguments for `dx()` and `dy()`:
+With `.nodeSize()` the x and y increment can be defined. `.separation()` additionally defines by how much the x increment will be multiplied between the current and the previous node:
 
 ```javascript
 var indent = d3.layout.indent()
-  .dx(10)
-  .dy(function(d) { return d.children ? 20 : 10; });
+  .nodeSize([10, 10])
+  .separation(function(a, b) { return a.children 2 : 1; });
 var tree = {id: "root", children: [{id: "child1"}, {id: "child2", children: [{id: "child21"}]}]};
 var nodes = indent.nodes(tree); // -> [{id:"root", x: 0, y: 0}, {id: "child1", x: 10, y: 10}, {id: "child2", x: 10, y: 30}, {id: "child21", x: 20, y: 40}]
 ```
