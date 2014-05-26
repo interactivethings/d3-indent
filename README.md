@@ -4,7 +4,7 @@ An indented tree layout for [D3](http://d3js.org), commonly used for hierarchica
 
 ## Usage
 
-On top of D3's usual hierarchical layout methods `sort()`, `children()`, and `value()` (see [D3 API documentation](https://github.com/mbostock/d3/wiki/Hierarchy-Layout)), d3.layout.indent implements `dx()` and `dy()` which are used to specify the x and y increment between nodes.
+On top of D3's usual hierarchical layout methods `sort()`, `children()`, and `value()` (see [D3 API documentation](https://github.com/mbostock/d3/wiki/Hierarchy-Layout)), d3.layout.indent implements `nodeSize()` and `separation()` to specify the x and y increment between nodes.
 
 Per default, both x and y increment by 1:
 
