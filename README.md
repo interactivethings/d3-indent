@@ -27,7 +27,7 @@ var nodes = indent.nodes(tree); // -> [{id:"root", x: 0, y: 0}, {id: "child1", x
 ## Examples
 
 * Demo: http://bl.ocks.org/herrstucki/5467720
-* Social Progress Index: http://www.socialprogressimperative.org/data/spi 
+* [Social Progress Index](http://www.socialprogressimperative.org/data/spi#performance/regions/spi/dim1,dim2,dim3)
 
 ## Author
 
